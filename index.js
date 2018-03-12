@@ -4,6 +4,7 @@ const util = require('postcss-plugin-utilities')
 
 function brightness (object, color, level = '50') {
   color = util.getRGB(color)
+  level = level.replace('%', '')
   if (!color.r && !color.g && !color.b) return color
   if (!level.startsWith('+') && !level.startsWith('-')) {
     level = level - chromatism.convert(color).hsl.l
